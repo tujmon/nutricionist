@@ -1,0 +1,5 @@
+- get
+- getAll
+- filtros
+- integracao entre tabelas - provavel quye o prisma faca
+- corrigir schema - urgente
