@@ -1,0 +1,5 @@
+# In Docker
+  # - TEST_POSTGRES_URI=postgres://prisma:prisma@postgres/
+  # Outside Docker
+  # - TEST_POSTGRES_URI=postgres://prisma:prisma@localhost:5432/
+DATABASE_URL = "postgres://providers:prisma@localhost:5432/"
