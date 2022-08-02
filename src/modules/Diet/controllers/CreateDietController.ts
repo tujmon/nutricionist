@@ -5,13 +5,8 @@ import { CreateDietService } from "../services/CreateDietService";
 
 export class CreateDietController {
   async handle(request: Request, response: Response) {
-    const {   calories,
-      fat,
-      carb,
-      protein,
-      type,
-      clientId,
-      meals} = request.body;
+    const { calories, fat, carb, protein, type, clientId, meals } =
+      request.body;
 
     const createNutricionistUseCase = container.resolve(CreateDietService);
 
@@ -22,7 +17,7 @@ export class CreateDietController {
       protein,
       type,
       clientId,
-      meals
+      meals,
     });
 
     return response.json(diet);

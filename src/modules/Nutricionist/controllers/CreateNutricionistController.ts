@@ -16,7 +16,7 @@ export class CreateNutricionistController {
       phone,
       email,
       cnn,
-      clients
+      clients,
     });
 
     return response.json(nutricionist);

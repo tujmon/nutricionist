@@ -5,7 +5,15 @@ import { CreateClientService } from "../services/CreateClientService";
 
 export class CreateClientController {
   async handle(request: Request, response: Response) {
-    const {  name, phone, email, nutricionistId, avaliations, appointments, diets} = request.body;
+    const {
+      name,
+      phone,
+      email,
+      nutricionistId,
+      avaliations,
+      appointments,
+      diets,
+    } = request.body;
 
     const createClientUseCase = container.resolve(CreateClientService);
 
@@ -16,7 +24,7 @@ export class CreateClientController {
       nutricionistId,
       avaliations,
       appointments,
-      diets
+      diets,
     });
 
     return response.json(client);

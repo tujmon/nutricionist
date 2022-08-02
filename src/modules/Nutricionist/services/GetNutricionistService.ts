@@ -4,16 +4,16 @@ import { prismaClient } from "../../../database/prismaClient";
 import { AppError } from "../../../errors/AppError";
 
 @injectable()
-export class GetClientsService {
+export class GetNutricionistService {
   async execute(request) {
-    const client = await prismaClient.client.findUnique({
+    const nutricionist = await prismaClient.nutricionist.findUnique({
       where: {
         email: request.email,
       },
     });
-    if (!client) {
-      throw new AppError("Client Already exist");
+    if (!nutricionist) {
+      throw new AppError("Nutricionist Already exist");
     }
-    return client;
+    return nutricionist;
   }
 }

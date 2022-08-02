@@ -5,9 +5,7 @@ import { CreateAppointmentService } from "../services/CreateAppointmentService";
 
 export class CreateAppointmentController {
   async handle(request: Request, response: Response) {
-    const {dateAndTime,avaliation,time,
-      status,
-      clientId} = request.body;
+    const { dateAndTime, avaliation, time, status, clientId } = request.body;
 
     const createAppointmentUseCase = container.resolve(
       CreateAppointmentService
@@ -18,7 +16,7 @@ export class CreateAppointmentController {
       avaliation,
       time,
       status,
-      clientId
+      clientId,
     });
 
     return response.json(appointment);

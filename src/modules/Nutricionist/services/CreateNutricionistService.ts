@@ -8,17 +8,19 @@ interface ICreateNutricionistDTO {
   phone: string;
   email: string;
   cnn: string;
-  clients: []
+  clients: [];
 }
 
 @injectable()
 export class CreateNutricionistService {
   async execute(requestDate: ICreateNutricionistDTO) {
-    const nutricionistAlreadyExist = await prismaClient.nutricionist.findUnique({
-      where: {
-        cnn: requestDate.cnn,
-      },
-    });
+    const nutricionistAlreadyExist = await prismaClient.nutricionist.findUnique(
+      {
+        where: {
+          cnn: requestDate.cnn,
+        },
+      }
+    );
 
     if (nutricionistAlreadyExist) {
       throw new AppError("CNN já cadastrado");

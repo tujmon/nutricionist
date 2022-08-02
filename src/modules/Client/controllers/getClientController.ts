@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
-import { GetClientsService } from "../services/GetClientService";
 
+import { GetClientsService } from "../services/GetClientService";
 
 export class ListClientController {
   async handle(request: Request, response: Response) {

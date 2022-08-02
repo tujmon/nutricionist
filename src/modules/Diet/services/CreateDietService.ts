@@ -10,7 +10,7 @@ interface ICreateDietDTO {
   protein: number;
   type: string;
   clientId: number;
-  meals: []
+  meals: [];
 }
 
 @injectable()

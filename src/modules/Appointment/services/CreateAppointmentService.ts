@@ -7,15 +7,7 @@ enum statusConsulta {
   Pendente,
   Concluida,
 }
-// model Appointment {
-//   id          Int      @id @default(autoincrement())
-//   dateAndTime DateTime @unique
 
-//   avaliation Avaliation?
-
-//   client   Client @relation(fields: [clientId], references: [id])
-//   clientId Int
-// }
 interface ICreateAppointmentDTO {
   dateAndTime: Date | string;
   avaliation: string;
