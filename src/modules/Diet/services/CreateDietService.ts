@@ -4,18 +4,21 @@ import { prismaClient } from "../../../database/prismaClient";
 import { AppError } from "../../../errors/AppError";
 
 interface ICreateDietDTO {
-  calories: string;
+  calories: number;
+  fat: number;
+  carb: number;
+  protein: number;
   type: string;
-  status: string;
-  client_id: string;
+  clientId: number;
+  meals: []
 }
 
 @injectable()
 export class CreateDietService {
   async execute(requestDate: ICreateDietDTO) {
-    const DietAlreadyExist = await prismaClient.company.findUnique({
+    const DietAlreadyExist = await prismaClient.diet.findUnique({
       where: {
-        client_id: requestDate.client_id,
+        clientId: requestDate.clientId,
       },
     });
 
@@ -26,13 +29,15 @@ export class CreateDietService {
     if (
       !requestDate.calories ||
       !requestDate.type ||
-      !requestDate.status ||
-      !requestDate.client_id
+      !requestDate.fat ||
+      !requestDate.carb ||
+      !requestDate.protein ||
+      !requestDate.clientId
     ) {
       throw new AppError("Dados Obrigatorios não informado");
     }
 
-    const diet = await prismaClient.company.create({
+    const diet = await prismaClient.diet.create({
       data: requestDate,
     });
 

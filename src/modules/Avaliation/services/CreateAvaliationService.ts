@@ -4,21 +4,21 @@ import { prismaClient } from "../../../database/prismaClient";
 import { AppError } from "../../../errors/AppError";
 
 interface ICreateAvaliationDTO {
-  weight: Date;
-  bmi: string;
-  size: string;
-  fat: string;
-  client_id: string;
-  appointment_id: string;
-  date: string;
+  weight: number;
+  imc: number;
+  size: number;
+  fat: number;
+  date?: Date | string;
+  clientId: number;
+  appointmentId: number;
 }
 
 @injectable()
 export class CreateAvaliationService {
   async execute(requestDate: ICreateAvaliationDTO) {
-    const AvaliationAlreadyExist = await prismaClient.company.findUnique({
+    const AvaliationAlreadyExist = await prismaClient.avaliation.findUnique({
       where: {
-        date: requestDate.date,
+        appointmentId: requestDate.appointmentId,
       },
     });
 
@@ -28,17 +28,16 @@ export class CreateAvaliationService {
 
     if (
       !requestDate.weight ||
-      !requestDate.bmi ||
+      !requestDate.imc ||
       !requestDate.size ||
       !requestDate.fat ||
-      !requestDate.client_id ||
-      !requestDate.appointment_id ||
-      !requestDate.date
+      !requestDate.clientId ||
+      !requestDate.appointmentId
     ) {
       throw new AppError("Dados Obrigatorios não informado");
     }
 
-    const avaliation = await prismaClient.company.create({
+    const avaliation = await prismaClient.avaliation.create({
       data: requestDate,
     });
 

@@ -5,7 +5,7 @@ import { CreateNutricionistService } from "../services/CreateNutricionistService
 
 export class CreateNutricionistController {
   async handle(request: Request, response: Response) {
-    const { name, telephone, email, cnn } = request.body;
+    const { name, phone, email, cnn, clients } = request.body;
 
     const createNutricionistUseCase = container.resolve(
       CreateNutricionistService
@@ -13,9 +13,10 @@ export class CreateNutricionistController {
 
     const nutricionist = await createNutricionistUseCase.execute({
       name,
-      telephone,
+      phone,
       email,
       cnn,
+      clients
     });
 
     return response.json(nutricionist);

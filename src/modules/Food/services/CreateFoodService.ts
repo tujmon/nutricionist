@@ -14,7 +14,7 @@ interface ICreateFoodDTO {
 @injectable()
 export class CreateFoodService {
   async execute(requestDate: ICreateFoodDTO) {
-    const FoodAlreadyExist = await prismaClient.company.findUnique({
+    const FoodAlreadyExist = await prismaClient.food.findUnique({
       where: {
         name: requestDate.name,
       },
@@ -34,7 +34,7 @@ export class CreateFoodService {
       throw new AppError("Dados Obrigatorios não informado");
     }
 
-    const food = await prismaClient.company.create({
+    const food = await prismaClient.food.create({
       data: requestDate,
     });
 

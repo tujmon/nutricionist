@@ -5,34 +5,35 @@ import { AppError } from "../../../errors/AppError";
 
 interface ICreateNutricionistDTO {
   name: string;
-  telephone: string;
+  phone: string;
   email: string;
   cnn: string;
+  clients: []
 }
 
 @injectable()
 export class CreateNutricionistService {
   async execute(requestDate: ICreateNutricionistDTO) {
-    const companyAlreadyExist = await prismaClient.company.findUnique({
+    const nutricionistAlreadyExist = await prismaClient.nutricionist.findUnique({
       where: {
         cnn: requestDate.cnn,
       },
     });
 
-    if (companyAlreadyExist) {
+    if (nutricionistAlreadyExist) {
       throw new AppError("CNN já cadastrado");
     }
 
     if (
       !requestDate.name ||
       !requestDate.cnn ||
-      !requestDate.telephone ||
+      !requestDate.phone ||
       !requestDate.email
     ) {
       throw new AppError("Dados Obrigatorios não informado");
     }
 
-    const nutricionist = await prismaClient.company.create({
+    const nutricionist = await prismaClient.nutricionist.create({
       data: requestDate,
     });
 

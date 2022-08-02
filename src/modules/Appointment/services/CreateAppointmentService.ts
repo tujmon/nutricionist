@@ -7,19 +7,29 @@ enum statusConsulta {
   Pendente,
   Concluida,
 }
+// model Appointment {
+//   id          Int      @id @default(autoincrement())
+//   dateAndTime DateTime @unique
+
+//   avaliation Avaliation?
+
+//   client   Client @relation(fields: [clientId], references: [id])
+//   clientId Int
+// }
 interface ICreateAppointmentDTO {
-  date: Date;
+  dateAndTime: Date | string;
+  avaliation: string;
   time: string;
   status: statusConsulta;
-  client_id: string;
+  clientId: number;
 }
 
 @injectable()
 export class CreateAppointmentService {
   async execute(requestDate: ICreateAppointmentDTO) {
-    const AppointmentAlreadyExist = await prismaClient.company.findUnique({
+    const AppointmentAlreadyExist = await prismaClient.appointment.findUnique({
       where: {
-        date: requestDate.date,
+        dateAndTime: requestDate.dateAndTime,
       },
     });
 
@@ -28,15 +38,15 @@ export class CreateAppointmentService {
     }
 
     if (
-      !requestDate.date ||
+      !requestDate.dateAndTime ||
       !requestDate.time ||
       !requestDate.status ||
-      !requestDate.client_id
+      !requestDate.clientId
     ) {
       throw new AppError("Dados Obrigatorios não informado");
     }
 
-    const appointment = await prismaClient.company.create({
+    const appointment = await prismaClient.appointment.create({
       data: requestDate,
     });
 

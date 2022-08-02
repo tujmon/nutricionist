@@ -5,17 +5,20 @@ import { CreateAppointmentService } from "../services/CreateAppointmentService";
 
 export class CreateAppointmentController {
   async handle(request: Request, response: Response) {
-    const { date, time, status, client_id } = request.body;
+    const {dateAndTime,avaliation,time,
+      status,
+      clientId} = request.body;
 
-    const createNutricionistUseCase = container.resolve(
+    const createAppointmentUseCase = container.resolve(
       CreateAppointmentService
     );
 
-    const appointment = await createNutricionistUseCase.execute({
-      date,
+    const appointment = await createAppointmentUseCase.execute({
+      dateAndTime,
+      avaliation,
       time,
       status,
-      client_id,
+      clientId
     });
 
     return response.json(appointment);

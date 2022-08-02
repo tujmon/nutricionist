@@ -35,7 +35,7 @@ model Client {
 
 model Appointment {
   id          Int      @id @default(autoincrement())
-  dateAndTime DateTime
+  dateAndTime DateTime @unique
 
   avaliation Avaliation?
 
@@ -66,15 +66,15 @@ model Diet {
   protein  Float
   type     String
 
-  client   Client @relation(fields: [clientId], references: [id])
-  clientId Int
+  client   Client? @relation(fields: [clientId], references: [id])
+  clientId Int @unique
 
   meals MealDiet[]
 }
 
 model Meal {
   id       Int    @id @default(autoincrement())
-  name     String
+  name     String @unique
   calories Float
   fat      Float
   carb     Float
@@ -87,7 +87,7 @@ model Meal {
 
 model Food {
   id       Int        @id @default(autoincrement())
-  name     String
+  name     String @unique
   calories Float
   fat      Float
   carb     Float
