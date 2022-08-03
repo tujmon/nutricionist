@@ -8,6 +8,7 @@ interface ICreateAvaliationDTO {
   imc: number;
   size: number;
   fat: number;
+  height: number;
   date?: Date | string;
   clientId: number;
   appointmentId: number;
