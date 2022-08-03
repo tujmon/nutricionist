@@ -3,10 +3,10 @@ import { container } from "tsyringe";
 
 import { GetClientsService } from "../services/GetClientService";
 
-export class ListClientController {
+export class GetClientController {
   async handle(request: Request, response: Response) {
-    const listClientUseCase = container.resolve(GetClientsService);
-    const client = await listClientUseCase.execute(request);
+    const getClientUseCase = container.resolve(GetClientsService);
+    const client = await getClientUseCase.execute(request);
 
     return response.json(client);
   }

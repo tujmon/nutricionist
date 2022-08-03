@@ -3,7 +3,7 @@ import { container } from "tsyringe";
 
 import { ListNutricionistsService } from "../services/ListNutricionistService";
 
-export class ListNutricionistsController {
+export class ListNutricionistController {
   async handle(request: Request, response: Response) {
     const listNutricionistUseCase = container.resolve(ListNutricionistsService);
 

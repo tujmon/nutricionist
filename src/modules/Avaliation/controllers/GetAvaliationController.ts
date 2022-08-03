@@ -3,10 +3,10 @@ import { container } from "tsyringe";
 
 import { GetAvaliationService } from "../services/GetAvaliationService";
 
-export class ListAvaliationController {
+export class GetAvaliationController {
   async handle(request: Request, response: Response) {
-    const listAvaliationUseCase = container.resolve(GetAvaliationService);
-    const avaliation = await listAvaliationUseCase.execute(request);
+    const getAvaliationUseCase = container.resolve(GetAvaliationService);
+    const avaliation = await getAvaliationUseCase.execute(request);
 
     return response.json(avaliation);
   }

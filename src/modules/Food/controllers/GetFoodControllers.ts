@@ -3,10 +3,10 @@ import { container } from "tsyringe";
 
 import { GetFoodService } from "../services/GetFoodService";
 
-export class ListFoodController {
+export class GetFoodController {
   async handle(request: Request, response: Response) {
-    const listFoodUseCase = container.resolve(GetFoodService);
-    const food = await listFoodUseCase.execute(request);
+    const getFoodUseCase = container.resolve(GetFoodService);
+    const food = await getFoodUseCase.execute(request);
 
     return response.json(food);
   }
