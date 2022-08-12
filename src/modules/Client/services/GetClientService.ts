@@ -5,10 +5,10 @@ import { AppError } from "../../../errors/AppError";
 
 @injectable()
 export class GetClientsService {
-  async execute(request) {
+  async execute(email) {
     const client = await prismaClient.client.findUnique({
       where: {
-        email: request.email,
+        email,
       },
     });
     if (!client) {

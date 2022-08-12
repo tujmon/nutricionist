@@ -3,16 +3,9 @@ import { injectable } from "tsyringe";
 import { prismaClient } from "../../../database/prismaClient";
 import { AppError } from "../../../errors/AppError";
 
-enum statusConsulta {
-  Pendente,
-  Concluida,
-}
-
 interface ICreateAppointmentDTO {
   dateAndTime: Date | string;
-  avaliation: string;
-  time: string;
-  status: statusConsulta;
+  avaliation?: string;
   clientId: number;
 }
 
@@ -29,12 +22,7 @@ export class CreateAppointmentService {
       throw new AppError("Data está indisponível");
     }
 
-    if (
-      !requestDate.dateAndTime ||
-      !requestDate.time ||
-      !requestDate.status ||
-      !requestDate.clientId
-    ) {
+    if (!requestDate.dateAndTime || !requestDate.clientId) {
       throw new AppError("Dados Obrigatorios não informado");
     }
 

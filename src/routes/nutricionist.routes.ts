@@ -11,7 +11,7 @@ const getNutricionistController = new GetNutricionistController();
 const listNutricionistController = new ListNutricionistController();
 
 NutricionistRoutes.post("", createNutricionistController.handle);
-NutricionistRoutes.get("", getNutricionistController.handle);
+NutricionistRoutes.get("/:email", getNutricionistController.handle);
 NutricionistRoutes.get("", listNutricionistController.handle);
 
-export { NutricionistRoutes as CompanyRoutes };
+export { NutricionistRoutes };

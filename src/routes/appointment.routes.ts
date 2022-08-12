@@ -11,7 +11,7 @@ const getAppointmentController = new GetAppointmentController();
 const listAppointmentController = new ListAppointmentController();
 
 AppointmentRoutes.post("", createAppointmentController.handle);
-AppointmentRoutes.get("", getAppointmentController.handle);
+AppointmentRoutes.get(":/dateAndTime", getAppointmentController.handle);
 AppointmentRoutes.get("", listAppointmentController.handle);
 
-export { AppointmentRoutes as CompanyRoutes };
+export { AppointmentRoutes };

@@ -11,6 +11,7 @@ export class CreateClientController {
       email,
       nutricionistId,
       avaliations,
+      password,
       appointments,
       diets,
     } = request.body;
@@ -24,6 +25,7 @@ export class CreateClientController {
       nutricionistId,
       avaliations,
       appointments,
+      password,
       diets,
     });
 

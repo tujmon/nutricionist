@@ -11,7 +11,7 @@ const getAvaliationController = new GetAvaliationController();
 const listAvaliationController = new ListAvaliationController();
 
 AvaliationRoutes.post("", createAvaliationController.handle);
-AvaliationRoutes.get("", getAvaliationController.handle);
+AvaliationRoutes.get("/:appointmentId", getAvaliationController.handle);
 AvaliationRoutes.get("", listAvaliationController.handle);
 
-export { AvaliationRoutes as CompanyRoutes };
+export { AvaliationRoutes };

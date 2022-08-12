@@ -5,7 +5,11 @@ import { prismaClient } from "../../../database/prismaClient";
 @injectable()
 export class ListAvaliationsService {
   async execute() {
-    const avaliation = await prismaClient.avaliation.findMany();
+    const avaliation = await prismaClient.avaliation.findMany({
+      include: {
+        client: true,
+      },
+    });
 
     return avaliation;
   }

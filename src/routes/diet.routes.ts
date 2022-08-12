@@ -11,7 +11,7 @@ const getDietController = new GetDietController();
 const listDietController = new ListDietController();
 
 DietRoutes.post("", createDietController.handle);
-DietRoutes.get("", getDietController.handle);
+DietRoutes.get("/:clientId", getDietController.handle);
 DietRoutes.get("", listDietController.handle);
 
-export { DietRoutes as CompanyRoutes };
+export { DietRoutes };

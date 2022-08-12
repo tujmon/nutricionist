@@ -12,7 +12,7 @@ export class GetFoodService {
       },
     });
     if (!food) {
-      throw new AppError("Food Already exist");
+      throw new AppError("food Already exist");
     }
     return food;
   }

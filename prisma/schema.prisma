@@ -18,11 +18,11 @@ model Nutricionist {
 }
 
 model Client {
-  id    Int    @id @default(autoincrement())
-  name  String
-  phone String
-  email String @unique
-
+  id             Int          @id @default(autoincrement())
+  name           String
+  phone          String
+  email          String       @unique
+  password       String
   nutricionist   Nutricionist @relation(fields: [nutricionistId], references: [id])
   nutricionistId Int
 

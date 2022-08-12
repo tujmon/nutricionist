@@ -5,10 +5,10 @@ import { AppError } from "../../../errors/AppError";
 
 @injectable()
 export class GetNutricionistService {
-  async execute(request) {
+  async execute(email) {
     const nutricionist = await prismaClient.nutricionist.findUnique({
       where: {
-        email: request.email,
+        email,
       },
     });
     if (!nutricionist) {

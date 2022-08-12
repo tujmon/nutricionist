@@ -5,7 +5,11 @@ import { prismaClient } from "../../../database/prismaClient";
 @injectable()
 export class ListNutricionistsService {
   async execute() {
-    const nutricionist = await prismaClient.nutricionist.findMany();
+    const nutricionist = await prismaClient.nutricionist.findMany({
+      include: {
+        clients: true,
+      },
+    });
 
     return nutricionist;
   }

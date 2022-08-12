@@ -11,7 +11,7 @@ const getFoodController = new GetFoodController();
 const listFoodController = new ListFoodController();
 
 FoodRoutes.post("", createFoodController.handle);
-FoodRoutes.get("", getFoodController.handle);
+FoodRoutes.get("/:name", getFoodController.handle);
 FoodRoutes.get("", listFoodController.handle);
 
-export { FoodRoutes as CompanyRoutes };
+export { FoodRoutes };

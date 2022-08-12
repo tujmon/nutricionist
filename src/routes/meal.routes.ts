@@ -11,7 +11,7 @@ const getMealController = new GetMealController();
 const listMealController = new ListMealController();
 
 MealRoutes.post("", createMealController.handle);
-MealRoutes.get("", getMealController.handle);
+MealRoutes.get("/:name", getMealController.handle);
 MealRoutes.get("", listMealController.handle);
 
-export { MealRoutes as CompanyRoutes };
+export { MealRoutes };

@@ -11,7 +11,7 @@ const getClientController = new GetClientController();
 const listClientController = new ListClientController();
 
 ClientRoutes.post("", createClientController.handle);
-ClientRoutes.get("", getClientController.handle);
+ClientRoutes.get("/:email", getClientController.handle);
 ClientRoutes.get("", listClientController.handle);
 
-export { ClientRoutes as CompanyRoutes };
+export { ClientRoutes };

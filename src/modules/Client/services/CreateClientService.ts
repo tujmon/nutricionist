@@ -7,10 +7,11 @@ interface ICreateClientDTO {
   name: string;
   phone: string;
   email: string;
+  password: string;
   nutricionistId: number;
-  avaliations: [];
-  appointments: [];
-  diets: [];
+  avaliations?: [];
+  appointments?: [];
+  diets?: [];
 }
 
 @injectable()
@@ -30,7 +31,8 @@ export class CreateClientService {
       !requestDate.name ||
       !requestDate.phone ||
       !requestDate.email ||
-      !requestDate.nutricionistId
+      !requestDate.nutricionistId ||
+      !requestDate.password
     ) {
       throw new AppError("Dados Obrigatorios não informado");
     }
