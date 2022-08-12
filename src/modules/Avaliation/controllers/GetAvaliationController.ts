@@ -6,7 +6,10 @@ import { GetAvaliationService } from "../services/GetAvaliationService";
 export class GetAvaliationController {
   async handle(request: Request, response: Response) {
     const getAvaliationUseCase = container.resolve(GetAvaliationService);
-    const avaliation = await getAvaliationUseCase.execute(request);
+    const { appointmentId } = request.params;
+    const avaliation = await getAvaliationUseCase.execute(
+      Number(appointmentId)
+    );
 
     return response.json(avaliation);
   }

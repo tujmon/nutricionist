@@ -5,10 +5,10 @@ import { AppError } from "../../../errors/AppError";
 
 @injectable()
 export class GetAvaliationService {
-  async execute(request) {
+  async execute(appointmentId) {
     const avaliation = await prismaClient.avaliation.findUnique({
       where: {
-        appointmentId: request.appointmentId,
+        appointmentId,
       },
     });
     if (!avaliation) {

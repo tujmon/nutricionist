@@ -8,13 +8,13 @@ generator client {
 }
 
 model Nutricionist {
-  id    Int    @id @default(autoincrement())
-  name  String
-  phone String
-  email String @unique
-  cnn   String @unique
-
-  clients Client[]
+  id       Int      @id @default(autoincrement())
+  name     String
+  phone    String
+  email    String   @unique
+  cnn      String   @unique
+  password String   @default("")
+  clients  Client[]
 }
 
 model Client {
@@ -48,7 +48,6 @@ model Avaliation {
   weight Float
   height Float
   imc    Float
-  size   Float
   fat    Float
   date   DateTime @default(now())
 

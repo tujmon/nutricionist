@@ -5,7 +5,7 @@ import { CreateAvaliationService } from "../services/CreateAvaliationService";
 
 export class CreateAvaliationController {
   async handle(request: Request, response: Response) {
-    const { weight, imc, size, fat, clientId, appointmentId, date } =
+    const { weight, imc, height, fat, clientId, appointmentId, date } =
       request.body;
 
     const createNutricionistUseCase = container.resolve(
@@ -15,7 +15,7 @@ export class CreateAvaliationController {
     const avaliation = await createNutricionistUseCase.execute({
       weight,
       imc,
-      size,
+      height,
       fat,
       clientId,
       appointmentId,

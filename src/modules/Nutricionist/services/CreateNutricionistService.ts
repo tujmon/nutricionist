@@ -8,6 +8,7 @@ interface ICreateNutricionistDTO {
   phone: string;
   email: string;
   cnn: string;
+  password: string;
   clients: [];
 }
 
@@ -25,7 +26,7 @@ export class CreateNutricionistService {
     if (nutricionistAlreadyExist) {
       throw new AppError("CNN já cadastrado");
     }
-
+    console.log(requestDate.password);
     if (
       !requestDate.name ||
       !requestDate.cnn ||

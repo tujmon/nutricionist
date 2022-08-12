@@ -6,9 +6,8 @@ import { AppError } from "../../../errors/AppError";
 interface ICreateAvaliationDTO {
   weight: number;
   imc: number;
-  size: number;
-  fat: number;
   height: number;
+  fat: number;
   date?: Date | string;
   clientId: number;
   appointmentId: number;
@@ -26,16 +25,16 @@ export class CreateAvaliationService {
     if (AvaliationAlreadyExist) {
       throw new AppError("Data está indisponível");
     }
-
+    console.log(requestDate);
     if (
       !requestDate.weight ||
       !requestDate.imc ||
-      !requestDate.size ||
+      !requestDate.height ||
       !requestDate.fat ||
       !requestDate.clientId ||
       !requestDate.appointmentId
     ) {
-      throw new AppError("Dados Obrigatorios não informado");
+      throw new AppError("Dados Obrigatorios não informados");
     }
 
     const avaliation = await prismaClient.avaliation.create({

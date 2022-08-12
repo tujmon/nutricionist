@@ -12,7 +12,7 @@ export class GetClientsService {
       },
     });
     if (!client) {
-      throw new AppError("Client Already exist");
+      throw new AppError("Client doesnt exist");
     }
     return client;
   }
